@@ -1,0 +1,7 @@
+{
+    "singleQuote": true,  //쌍따옴표 말고 홑따옴표로 자동수정
+    "semi": true,  // 세미콜론 자동 작성
+    "tabWidth": 2,  // 탭 했을때 넓이
+    "trailingComma": "all",  // , 이어서 써야될때 자동 수정
+    "printWidth": 80 // 줄바꿈 할 폭 길이
+}
