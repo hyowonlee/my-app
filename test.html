@@ -7,12 +7,36 @@
   <body>
     <script>
       // concat, filter, map, slice, 스프레드 연산자
+      console.log('1.=================== 스프레드 연산자')
       const a = [1,2,3];
       const b = [...a];
-      console.log('=================== 스프레드 연산자')
       b.push(4);
-      console.log(`a값은 ${a}`);
-      console.log(`b값은 ${b}`);
+      console.log(`a1값은 ${a}`); // 1,2,3
+      console.log(`b1값은 ${b}`); // 1,2,3,4
+
+
+      console.log('2.=================== concat (추가하기)')
+      const a2 = [1,2,3];
+      const b2 = a2.concat(4); //a2 배열에 4라는 값을 추가해서 새 배열을 만들겠다
+      console.log(`a2값은 ${a2}`); // 1,2,3
+      console.log(`b2값은 ${b2}`); // 1,2,3,4
+      // 스프레드 연산자를 이런식으로 쓰면 concat처럼 사용할 수도 있다
+      const c2 = [0, ...a2, 4];
+      console.log(`c2값은 ${c2}`); // 1,2,3,4
+
+      console.log('3.=================== filter (걸러내기)') // filter는 보통 요소를 삭제할때 사용
+      const a3 = [1,2,3];
+      const b3 = a3.filter((n)=>{return n != 1}); // bool을 return 받는다 -> filter 함수는 true만 걸러내준다
+      console.log(`a3값은 ${a3}`); // 1,2,3
+      console.log(`b3값은 ${b3}`); // 2,3
+
+      console.log('4.=================== slice (잘라내기)')
+      const a4 = [1,2,3];
+      const b4 = a4.slice(0, 2);
+      console.log(`a4값은 ${a4}`); // 1,2,3
+      console.log(`b4값은 ${b4}`); // 1,2
+      const c4 = [...a4.slice(0,2), 4, ...a4.slice(2,3)];
+      console.log(`c4값은 ${c4}`); // 1,2,4,3
     </script>
   </body>
 </html>
