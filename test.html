@@ -26,7 +26,7 @@
 
       console.log('3.=================== filter (걸러내기)') // filter는 보통 요소를 삭제할때 사용
       const a3 = [1,2,3];
-      const b3 = a3.filter((n)=>{return n != 1}); // bool을 return 받는다 -> filter 함수는 true만 걸러내준다
+      const b3 = a3.filter((n)=>{return n != 1}); // bool을 return 받는다 -> filter 함수는 배열을 순회하며 return값이 true인것만 걸러내준다
       console.log(`a3값은 ${a3}`); // 1,2,3
       console.log(`b3값은 ${b3}`); // 2,3
 
@@ -37,6 +37,14 @@
       console.log(`b4값은 ${b4}`); // 1,2
       const c4 = [...a4.slice(0,2), 4, ...a4.slice(2,3)];
       console.log(`c4값은 ${c4}`); // 1,2,4,3
+
+      console.log('5.=================== map (반복하기)') // map은 filter와 비슷하게 배열을 순회하며 해당 로직을 수행한 결과값을 전부 뿌려준다
+      const a5 = [1,2,3];
+      //a5.forEach((n) => { console.log(n); }); // 자바스크립트에서 forEach 사용법
+      const b5 = a5.map((n)=>{ return n+1; });
+      console.log(`a5값은 ${a5}`); // 1,2,3
+      console.log(`b5값은 ${b5}`); // 2,3,4
+
     </script>
   </body>
 </html>
