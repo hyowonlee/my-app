@@ -45,6 +45,32 @@
       console.log(`a5값은 ${a5}`); // 1,2,3
       console.log(`b5값은 ${b5}`); // 2,3,4
 
+
+      console.log('6.=================== object 수정')
+      const a6 = { id:1, name:"a"};
+      const b6 = { id:1, name:"a", name:"b"}; // 이런식으로 js object의 key값이 중복된다면 나중에 온 data로 덮어씌워짐
+      const c6 = {...a6, name:"c"}; //따라서 여기서 는 a6의 값에서 name만 c로 덮어씌워서 수정됨
+      console.log(a6); //name:a
+      console.log(b6); //name:b
+      console.log(c6); //name:c
+
+      // 위를 활용하여 내가 수정할 데이터를 받아서 obj를 수정하고싶다면 아래처럼 obj 데이터를 ...을 활용해 넣어줘서 수정하면 된다
+      const data = {name:"data"};
+      const d6 = {...a6, ...data};
+      console.log(d6); //name:data
+
+      //그렇다면 obj가 들어있는 배열에서 수정요청이 들어온 값을 수정하려면
+      const users = [
+      { id:1, name:"a"},
+      { id:2, name:"b"},
+      { id:3, name:"c"},
+      ];
+      
+      const updateUserDto = {id:2, name:"update2"}; // id가 2인 obj를 이 값으로 수정하라고 요청이 들어왔다 가정
+
+      const newUsers = users.map((user)=>{return user.id === updateUserDto.id ? {...user, ...updateUserDto} : user;}); //깊은복사 수행
+      
+      console.log(newUsers);
     </script>
   </body>
 </html>
