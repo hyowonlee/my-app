@@ -1,21 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
-  let list = [1, 2, 3]; // 이 값에 서버에서 restcontroller로 받아온 데이터를 저장하면 화면에 데이터를 뿌릴수 있을것
-  //그러니 이 list 값만 관리 하면되겠지
+  //let number = 1;
+  const [number, setNumber] = useState(1);
+
+  const add = () => {
+    setNumber(number + 1);
+    console.log('add',number);
+  }
 
   return (
     <div>
       <div>
-        {list.map((n) => {
-          return <h1>{n}</h1>;
-        })}
-      </div>
-      <div>
-        {list.map((n) => {
-          return n;
-        })}
+        <h1>숫자 : {number}</h1>
+        <button onClick={add}>더하기</button>
       </div>
     </div>
   );
