@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
+import Sub from './Sub';
 
 function App() {
   //let number = 1;
@@ -8,14 +9,15 @@ function App() {
 
   const add = () => {
     setNumber(number + 1);
-    console.log('add',number);
-  }
+    console.log('add', number);
+  };
 
   return (
     <div>
       <div>
         <h1>숫자 : {number}</h1>
         <button onClick={add}>더하기</button>
+        <Sub />
       </div>
     </div>
   );
