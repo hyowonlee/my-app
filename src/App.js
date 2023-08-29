@@ -1,32 +1,28 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
-  console.log('App실행됨');
 
-  let sample = [
-    { id: 1, name: 'kim1' },
-    { id: 2, name: 'kim2' },
-  ];
-
-  const [users, setUsers] = useState(sample);
+  const [data, setData] = useState(0);
 
   const download = () => {
-    setUsers(sample); // 이렇게 일땐 users와 sample은 똑같은 데이터이지만 서로 주소가 다름
-    //그래서 다른 데이터로 인식해 재랜더링 됨
-    //만약 최초 데이터와 주소값이 서로 같다면 재랜더링 안됨
+    let downloadData = 5;
+    setData(downloadData);
+  }
 
-    //setUsers([...sample]); // 이렇게 하면 주소값이 다르니 재랜더링 될 것
-  };
+  //실행시점:
+  // 1. 최초 렌더링 시
+  // 2. state 변수 변경시 (useEffect의 dependency list를 지정하면 
+  //    해당 state값이 변할때만 useEffect 실행)
+  useEffect(() => {
+    console.log("useEffect 실행");
+    download();
+  },[]);
 
   return (
     <div>
-      <button onClick={download}>download</button>
-      {users.map((user) => (
-        <h1>
-          {user.id}, {user.name}
-        </h1>
-      ))}
+      <h1> 데이터 : {data}</h1>
+      <button onClick={()=>{setData(data+1)}}>더하기</button>
     </div>
   );
 }
