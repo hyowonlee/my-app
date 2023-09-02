@@ -1,43 +1,29 @@
-import { useEffect, useMemo, useState } from 'react';
+import { createRef, useEffect, useMemo, useRef, useState } from 'react';
 import './App.css';
 
 function App() {
-  const [list, setList] = useState([1, 2, 3, 4]);
-  const [str, setStr] = useState('합계');
+  const [list, setList] = useState([
+    { id: 1, name: 'kim1' },
+    { id: 2, name: 'kim2' },
+  ]);
 
-  const getAddResult = () => {
-    let sum = 0;
-    list.forEach((i) => (sum = sum + i));
-    console.log('sum 함수실행됨:', sum);
-    return sum;
-  };
-
-  const addResult = useMemo(() => getAddResult(), [list]);
+  const myRefs = Array.from({ length: list.length }).map(() => createRef());
 
   return (
     <div>
       <button
         onClick={() => {
-          setStr('안녕');
+          console.log(myRefs.current);
+          myRefs.map((ref) => (ref.current.style.background = 'red'));
         }}
       >
-        문자변경
+        색 변경
       </button>
-      <button
-        onClick={() => {
-          setList([...list, 10]);
-        }}
-      >
-        리스트값 추가
-      </button>
-      <div>
-        {list.map((i) => {
-          return <h1>{i}</h1>;
-        })}
-      </div>
-      <div>
-        {str} : {addResult}
-      </div>
+
+      {list.map((user, i) => {
+        //map 에서 2번째 매개변수를 적어주면 반복문 i처럼 사용할 수 있다
+        return <h1 ref={myRefs[i]}>{user.name}</h1>;
+      })}
     </div>
   );
 }
