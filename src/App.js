@@ -6,6 +6,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Login from './components/login/Login';
 import LoginPage from './pages/LoginPage';
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       이런식으로 component로 관리하면 나중에 특정 component만 재랜더링이 필요할때
       컴포넌트별로 return 리소스 관리도 가능해서 좋다*/}
       <LoginPage />
+      <HomePage />
     </div>
   );
 }
