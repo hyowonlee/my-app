@@ -13,12 +13,16 @@ const HomePage = () => {
 
   //최초 한번만 실행되게
   useEffect(() => {
-    //http로 다운로드 했다고 가정
+    //http로 비동기 다운로드 했다고 가정
     let data = [
       { id: 1, title: 'title1', content: 'content1' },
       { id: 2, title: 'title2', content: 'content2' },
       { id: 3, title: 'title3', content: 'content3' },
     ];
+
+    //비동기 다운로드 했으니 다운 다 안돼도 화면은 뜰거임 그럼 다운 다 되기전엔 해당 값이 비어있다
+    //다운이 다 되고 아래의 setBoards를 실행하는 순간 state 값의 변화가 일어나니 재랜더링이 일어나서
+    //해당하는 값이 들어가게 될것 그래서 이 값은 반드시 state 값이여야 함 아니면 다운로드된 값이 보여지지 않음
     setBoards([...data]);
   }, []);
 

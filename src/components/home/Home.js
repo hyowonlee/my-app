@@ -1,6 +1,8 @@
 import React from 'react';
 
-const Home = () => {
+const Home = (props) => {
+  const boards = props.boards;
+  console.log(boards);
   return (
     <div>
       <h1>홈페이지 입니다.</h1>
