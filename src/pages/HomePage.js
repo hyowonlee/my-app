@@ -30,7 +30,7 @@ const HomePage = () => {
     <div>
       <Header />
       {/* 이런식으로 tag의 속성처럼 값을 적어주면 해당 컴포넌트로 값이 넘어가는데 이걸 props라 한다 */}
-      <Home boards={boards} />
+      <Home boards={boards} id={1} />
       <Footer />
     </div>
   );
