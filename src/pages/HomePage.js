@@ -10,6 +10,11 @@ const HomePage = () => {
   // 이런 로직은 Header같은 컴포넌트만들어놓은 파일에선 하지마라 왜냐면 컴포넌트는 재사용되니까 필요없는데 딸려갈수도있음
   // 그러니 변수저장이나 로직같은건 컴포넌트 조립하는 페이지파일에서 해라
   const [boards, setBoards] = useState([]);
+  const [number, setNumber] = useState(0);
+
+  const increaseNumber = () => {
+    setNumber(number + 1);
+  };
 
   //최초 한번만 실행되게
   useEffect(() => {
@@ -30,7 +35,13 @@ const HomePage = () => {
     <div>
       <Header />
       {/* 이런식으로 tag의 속성처럼 값을 적어주면 해당 컴포넌트로 값이 넘어가는데 이걸 props라 한다 */}
-      <Home boards={boards} id={1} />
+      <Home
+        boards={boards}
+        setBoards={setBoards}
+        number={number}
+        setNumber={setNumber}
+        increaseNumber={increaseNumber}
+      />
       <Footer />
     </div>
   );
