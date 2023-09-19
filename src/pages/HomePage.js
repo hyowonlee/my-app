@@ -11,6 +11,7 @@ const HomePage = () => {
   // 그러니 변수저장이나 로직같은건 컴포넌트 조립하는 페이지파일에서 해라
   const [boards, setBoards] = useState([]);
   const [number, setNumber] = useState(0);
+  const [user, setUser] = useState([]);
 
   const increaseNumber = () => {
     setNumber(number + 1);
@@ -29,6 +30,7 @@ const HomePage = () => {
     //다운이 다 되고 아래의 setBoards를 실행하는 순간 state 값의 변화가 일어나니 재랜더링이 일어나서
     //해당하는 값이 들어가게 될것 그래서 이 값은 반드시 state 값이여야 함 아니면 다운로드된 값이 보여지지 않음
     setBoards([...data]);
+    setUser({ id: 1, username: 'ssar' });
   }, []);
 
   return (
@@ -39,6 +41,7 @@ const HomePage = () => {
         boards={boards}
         setBoards={setBoards}
         number={number}
+        user={user}
         setNumber={setNumber}
         increaseNumber={increaseNumber}
       />

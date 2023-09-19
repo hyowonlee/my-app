@@ -6,11 +6,12 @@ import { styled } from 'styled-components';
 const StyledHeaderList = styled.div`
   border: 1px solid black;
   height: 300px;
+  background-color: ${(props) => props.backgroundColor};
 `;
 
 const Header = () => {
   return (
-    <StyledHeaderList>
+    <StyledHeaderList backgroundColor="blue">
       <ul>
         <li>menu1</li>
         <li>menu2</li>
