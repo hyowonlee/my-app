@@ -7,13 +7,7 @@ import Footer from '../components/Footer';
 //메인 페이지에선 이 컴포넌트만 작성해주면 안에 있는 3개 컴포넌트를 한번에 생성
 //재사용도 굉장히 편하다
 const LoginPage = () => {
-  return (
-    <div>
-      <Header />
-      <Login></Login>
-      <Footer />
-    </div>
-  );
+  return <Login></Login>;
 };
 
 export default LoginPage;
