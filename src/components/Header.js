@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 //이 파일로 재사용을 위한 하나의 컴포넌트를 생성함
@@ -11,10 +12,14 @@ const StyledHeaderList = styled.div`
 
 const Header = () => {
   return (
-    <StyledHeaderList backgroundColor="blue">
+    <StyledHeaderList backgroundColor="green">
       <ul>
-        <li>menu1</li>
-        <li>menu2</li>
+        <li>
+          <Link to="/">홈</Link>
+        </li>
+        <li>
+          <Link to="/login/10">로그인</Link>
+        </li>
       </ul>
     </StyledHeaderList>
   );

@@ -10,7 +10,7 @@ const StyledLoginBox = styled.div`
 const Login = () => {
   return (
     <StyledLoginBox>
-      <h1>login page</h1>
+      <h1>로그인 페이지 입니다</h1>
     </StyledLoginBox>
   );
 };
