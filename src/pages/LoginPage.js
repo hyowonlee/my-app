@@ -12,11 +12,12 @@ const LoginPage = () => {
   console.log(match);
   console.log(match.pathname);
   console.log(match.params.id);
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // react router dom v5 의 history와 같음 v6 넘어오면서 변경된거
 
   return (
     <div>
       <button onClick={() => navigate(-1)}> 뒤로가기 </button>
+      <button onClick={() => navigate('/')}> / 로 가기 </button>
       <Login />
     </div>
   );
