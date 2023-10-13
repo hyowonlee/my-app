@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 import styled from 'styled-components';
 
 const StyledDeleteButton = styled.button`
@@ -15,6 +16,7 @@ const Home = (props) => {
 
   return (
     <div>
+      <Button variant="primary">Primary</Button>
       <StyledAddButton user={user}>더하기</StyledAddButton>
       <h1>홈페이지 입니다. 번호 {number}</h1>
       <button
@@ -24,7 +26,6 @@ const Home = (props) => {
       >
         번호증가
       </button>
-
       <button onClick={increaseNumber}>번호증가2</button>
       <StyledDeleteButton
         user={user}
