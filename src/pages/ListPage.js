@@ -9,6 +9,7 @@ const ListPage = () => {
     padding: 10px;
     height: 100px;
     margin: 20px;
+    align-items: center;
   `;
 
   const [posts, setPosts] = useState([
