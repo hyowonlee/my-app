@@ -1,23 +1,17 @@
-import { createRef, useEffect, useMemo, useRef, useState } from 'react';
-import './App.css';
-import { styled } from 'styled-components';
-import { Title } from './MyCss';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Login from './components/login/Login';
-import LoginPage from './pages/LoginPage';
-import HomePage from './pages/HomePage';
 import { Route, Routes } from 'react-router-dom';
+import Navigation from './components/Navigation';
+import ListPage from './pages/ListPage';
+import WritePage from './pages/WritePage';
 
+// 글쓰기, 글삭제, 글 목록보기
 function App() {
   return (
     <div>
-      <Header />
+      <Navigation />
       <Routes>
-        <Route path="/" exact={true} element={<HomePage />} />
-        <Route path="/login/:id" exact={true} element={<LoginPage />} />
+        <Route path="/" exact={true} element={<ListPage />} />
+        <Route path="/write" exact={true} element={<WritePage />} />
       </Routes>
-      <Footer />
     </div>
   );
 }
