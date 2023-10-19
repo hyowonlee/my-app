@@ -7,11 +7,12 @@ import WritePage from './pages/WritePage';
 function App() {
   return (
     <div>
-      <Navigation />
+      <ListPage />
+      {/* <Navigation />
       <Routes>
         <Route path="/" exact={true} element={<ListPage />} />
         <Route path="/write" exact={true} element={<WritePage />} />
-      </Routes>
+      </Routes> */}
     </div>
   );
 }
