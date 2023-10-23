@@ -20,9 +20,8 @@ const ListPage = () => {
     { id: 5, title: '제목5', content: '내용5' },
   ]);
 
-  const [id, setId] = useState(7);
   const [post, setPost] = useState({
-    id: id,
+    id: 5,
     title: '',
     content: '',
   });
@@ -30,10 +29,15 @@ const ListPage = () => {
   const handleWrite = () => {
     setPost({
       ...post,
-      id: id,
+      id: post.id + 1,
     });
-    setPosts([...posts, post]);
-    setId(id + 1);
+    setPosts([
+      ...posts,
+      {
+        ...post,
+        id: post.id + 1,
+      },
+    ]);
   };
 
   const handleForm = (e) => {
@@ -53,6 +57,14 @@ const ListPage = () => {
     console.log(post);
     console.log(post.title);
     console.log(post.content);
+  };
+
+  const handleDelete = (e) => {
+    const remainPosts = posts.filter((n) => {
+      return n.id != e.target.name;
+    });
+    console.log(remainPosts);
+    setPosts(remainPosts);
   };
 
   return (
@@ -85,7 +97,9 @@ const ListPage = () => {
           <div>
             번호: {post.id} / 제목: {post.title} / 내용: {post.content}
           </div>
-          <button>삭제</button>
+          <button type="button" name={post.id} onClick={handleDelete}>
+            삭제
+          </button>
         </StyledItemBoxDiv>
       ))}
     </div>
