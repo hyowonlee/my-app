@@ -20,29 +20,39 @@ const ListPage = () => {
     { id: 5, title: '제목5', content: '내용5' },
   ]);
 
-  const handleWrite = () => {
-    //ListPage.js의 setPosts를 호출해 글쓰기 한 데이터를 담아야함
-    let post = { id: 6, title: 'input data' };
-  };
-
+  const [id, setId] = useState(7);
   const [post, setPost] = useState({
-    id: '',
+    id: id,
     title: '',
     content: '',
   });
 
-  const handleChangeTitle = (e) => {
-    console.log(e.target.value);
-    setPost({ title: e.target.value });
-  };
-  const handleChangeContent = (e) => {
-    console.log(e.target.value);
-    setPost({ content: e.target.value });
+  const handleWrite = () => {
+    setPost({
+      ...post,
+      id: id,
+    });
+    setPosts([...posts, post]);
+    setId(id + 1);
   };
 
   const handleForm = (e) => {
     console.log(e.target.name);
     console.log(e.target.value);
+
+    //computed property name (js 문법 키값 동적할당)
+    //대괄호로 감싸면 해당 변수값이 key값으로 동적으로 할당됨 따라서 object를 변수로 생성가능
+    //(다른 언어들은 컴파일 후에 변수가 지정되니 안되기도 하고 key값쪽엔 원래 변수값이 못오고 string 만 오니까 안됨)
+    //이 문법을 사용해서 데이터가 작성되는 input태그를 동적으로 할당해서 칸이 여러개여도 하나의 함수로 동적으로 처리가능
+    //즉 여기에선 title, content빈칸에 대한 값 할당을 한번에 처리할 수 있는것
+    setPost({
+      ...post,
+      [e.target.name]: e.target.value,
+    });
+
+    console.log(post);
+    console.log(post.title);
+    console.log(post.content);
   };
 
   return (
@@ -63,6 +73,8 @@ const ListPage = () => {
           onChange={handleForm}
           name="content"
         />
+        {/* button 태그를 그냥 form에서 submit 되도록 사용할 수도 있는데 대신 form 태그 속성에서 onSubmit으로 이 handleWrite를 실행해야하고
+        form 태그에서 submit이 되면 새로고침이 되기에 form의 새로고침을 막는 <함수의매개변수>.preventDefault()를 handleWrite에서 실행시키면 됨*/}
         <button type="button" onClick={handleWrite}>
           글쓰기
         </button>
@@ -71,7 +83,7 @@ const ListPage = () => {
       {posts.map((post) => (
         <StyledItemBoxDiv>
           <div>
-            번호: {post.id} 제목: {post.title}
+            번호: {post.id} / 제목: {post.title} / 내용: {post.content}
           </div>
           <button>삭제</button>
         </StyledItemBoxDiv>
