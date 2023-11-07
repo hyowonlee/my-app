@@ -1,18 +1,21 @@
-import { Route, Routes } from 'react-router-dom';
-import Navigation from './components/Navigation';
-import ListPage from './pages/ListPage';
-import WritePage from './pages/WritePage';
+import React, { useState } from 'react';
+import './App.css';
+import Top from './components/Top';
+import Bottom from './components/Bottom';
 
 // 글쓰기, 글삭제, 글 목록보기
 function App() {
+  const [number, setNumber] = useState(1);
+
+  const addNumber = () => {
+    setNumber(number + 1);
+  };
+
   return (
-    <div>
-      <ListPage />
-      {/* <Navigation />
-      <Routes>
-        <Route path="/" exact={true} element={<ListPage />} />
-        <Route path="/write" exact={true} element={<WritePage />} />
-      </Routes> */}
+    <div className="container">
+      <h1>최상단 화면</h1>
+      <Top number={number} />
+      <Bottom addNumber={addNumber} />
     </div>
   );
 }
